@@ -22,35 +22,12 @@ namespace Timer
 		}
 
 		public override void RowSelected (UITableView tableView, Foundation.NSIndexPath indexPath)
-		{
+		{			
 			string cellTitle = tableItems [indexPath.Row];
-			string textToSpeech = "{0} is at {1}.";
 
-			switch (cellTitle) {
-
-			case "Reps":
-				textToSpeech = string.Format(textToSpeech, 
-					this.tableItems[indexPath.Row],
-					this.timer.Exercise.Reps);
-				break;
-			case "Sets":
-				textToSpeech = string.Format(textToSpeech, 
-					this.tableItems[indexPath.Row],
-					this.timer.Exercise.Sets);
-				break;
-			case "Prepare":
-				textToSpeech = string.Format(textToSpeech, 
-					this.tableItems[indexPath.Row],
-					this.timer.Exercise.Prepare);				
-				break;
-			case "Rest":
-				textToSpeech = string.Format(textToSpeech, 
-					this.tableItems[indexPath.Row],
-					this.timer.Exercise.Rest);				
-				break;
-			}
-
-			this.timer.Speak(textToSpeech);
+			this.timer.Speak(string.Format("{0} is at {1}.", 
+				cellTitle,
+				this.timer.Exercise.GetType().GetProperty(cellTitle).GetValue(this.timer.Exercise)));
 		}
 
 		public override UITableViewCell GetCell (UITableView tableView, Foundation.NSIndexPath indexPath)
@@ -62,22 +39,9 @@ namespace Timer
 
 			string cellTitle = tableItems [indexPath.Row];
 
-			switch (cellTitle) {
-
-			case "Reps":
-				cell.TextLabel.Text = string.Format ("{0}: {1}", cellTitle, this.timer.Exercise.Reps);
-				break;
-			case "Sets":
-				cell.TextLabel.Text = string.Format ("{0}: {1}", cellTitle, this.timer.Exercise.Sets);
-				break;
-			case "Prepare":
-				cell.TextLabel.Text = string.Format ("{0}: {1} (s)", cellTitle, this.timer.Exercise.Prepare);
-				break;
-			case "Rest":
-				cell.TextLabel.Text = string.Format ("{0}: {1} (s)", cellTitle, this.timer.Exercise.Rest);	
-				break;
-			}
-
+			cell.TextLabel.Text = string.Format ("{0}: {1}", 
+				cellTitle,
+				this.timer.Exercise.GetType().GetProperty(cellTitle).GetValue(this.timer.Exercise));
 
 			return cell;
 
