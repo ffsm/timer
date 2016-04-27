@@ -20,19 +20,15 @@ namespace Timer
 
 		[Outlet]
 		[GeneratedCode ("iOS Designer", "1.0")]
-		UILabel lblReps { get; set; }
+		UINavigationBar MainNavBar { get; set; }
 
 		[Outlet]
 		[GeneratedCode ("iOS Designer", "1.0")]
-		UILabel lxlSets { get; set; }
+		UIStepper RepsStepper { get; set; }
 
 		[Outlet]
 		[GeneratedCode ("iOS Designer", "1.0")]
-		UILabel txtReps { get; set; }
-
-		[Outlet]
-		[GeneratedCode ("iOS Designer", "1.0")]
-		UILabel txtSets { get; set; }
+		UITableViewCell RepsViewCell { get; set; }
 
 		[Action ("Clicked:")]
 		[GeneratedCode ("iOS Designer", "1.0")]
@@ -44,21 +40,17 @@ namespace Timer
 				btnSpeak.Dispose ();
 				btnSpeak = null;
 			}
-			if (lblReps != null) {
-				lblReps.Dispose ();
-				lblReps = null;
+			if (MainNavBar != null) {
+				MainNavBar.Dispose ();
+				MainNavBar = null;
 			}
-			if (lxlSets != null) {
-				lxlSets.Dispose ();
-				lxlSets = null;
+			if (RepsStepper != null) {
+				RepsStepper.Dispose ();
+				RepsStepper = null;
 			}
-			if (txtReps != null) {
-				txtReps.Dispose ();
-				txtReps = null;
-			}
-			if (txtSets != null) {
-				txtSets.Dispose ();
-				txtSets = null;
+			if (RepsViewCell != null) {
+				RepsViewCell.Dispose ();
+				RepsViewCell = null;
 			}
 		}
 	}

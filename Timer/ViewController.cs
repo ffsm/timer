@@ -39,8 +39,11 @@ namespace Timer
 		{
 			
 			var speechSynthesizer = new AVSpeechSynthesizer ();
-			var speechUtterance =
-				new AVSpeechUtterance ("O pipo era legal?");
+
+			var speechUtterance = new AVSpeechUtterance ("O pipo era legal?"){
+				Voice = AVSpeechSynthesisVoice.FromLanguage ("pt-BR"),
+			};
+
 			speechSynthesizer.SpeakUtterance (speechUtterance);
 		}
 	}
