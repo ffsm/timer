@@ -20,19 +20,19 @@ namespace Timer
 
 		[Outlet]
 		[GeneratedCode ("iOS Designer", "1.0")]
-		UINavigationBar MainNavBar { get; set; }
+		UIView MainView { get; set; }
 
 		[Outlet]
 		[GeneratedCode ("iOS Designer", "1.0")]
-		UIStepper RepsStepper { get; set; }
+		UITableView TimerTableView { get; set; }
 
 		[Outlet]
 		[GeneratedCode ("iOS Designer", "1.0")]
-		UITableViewCell RepsViewCell { get; set; }
+		UITextView txtSpeech { get; set; }
 
-		[Action ("Clicked:")]
+		[Action ("BtnSpeak_TouchUpInside:")]
 		[GeneratedCode ("iOS Designer", "1.0")]
-		partial void Clicked (UIButton sender);
+		partial void BtnSpeak_TouchUpInside (UIButton sender);
 
 		void ReleaseDesignerOutlets ()
 		{
@@ -40,17 +40,17 @@ namespace Timer
 				btnSpeak.Dispose ();
 				btnSpeak = null;
 			}
-			if (MainNavBar != null) {
-				MainNavBar.Dispose ();
-				MainNavBar = null;
+			if (MainView != null) {
+				MainView.Dispose ();
+				MainView = null;
 			}
-			if (RepsStepper != null) {
-				RepsStepper.Dispose ();
-				RepsStepper = null;
+			if (TimerTableView != null) {
+				TimerTableView.Dispose ();
+				TimerTableView = null;
 			}
-			if (RepsViewCell != null) {
-				RepsViewCell.Dispose ();
-				RepsViewCell = null;
+			if (txtSpeech != null) {
+				txtSpeech.Dispose ();
+				txtSpeech = null;
 			}
 		}
 	}

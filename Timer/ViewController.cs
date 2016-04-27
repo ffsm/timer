@@ -3,7 +3,6 @@ using Timer.Controllers;
 using Timer.Models;
 
 using UIKit;
-using AVFoundation;
 
 namespace Timer
 {
@@ -23,8 +22,9 @@ namespace Timer
 		{
 			base.ViewDidLoad ();
 
-			this.txtReps.Text = this.Timer.Exercise.Reps.ToString ();
-			this.txtSets.Text = this.Timer.Exercise.Sets.ToString ();
+			this.TimerTableView.Source = new TimerTableViewSource (
+				new string[]{ "Reps", "Sets", "Prepare", "Rest" },
+				this.Timer);
 
 			// Perform any additional setup after loading the view, typically from a nib.
 		}
@@ -35,16 +35,9 @@ namespace Timer
 			// Release any cached data, images, etc that aren't in use.
 		}
 
-		partial void Clicked (UIButton sender)
+		partial void BtnSpeak_TouchUpInside (UIButton sender)
 		{
-			
-			var speechSynthesizer = new AVSpeechSynthesizer ();
-
-			var speechUtterance = new AVSpeechUtterance ("O pipo era legal?"){
-				Voice = AVSpeechSynthesisVoice.FromLanguage ("pt-BR"),
-			};
-
-			speechSynthesizer.SpeakUtterance (speechUtterance);
+			this.Timer.Speak(txtSpeech.Text);
 		}
 	}
 }
